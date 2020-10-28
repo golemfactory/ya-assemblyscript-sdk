@@ -1,0 +1,30 @@
+{
+  "name": "ya-assemblyscript-sdk",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "ypack": "./lib/ypack.js"
+  },
+  "scripts": {
+    "start": "nodemon --watch 'src' --ext ts --exec 'tsc -p ./src'",
+    "asbuild:untouched": "asc assembly/index.ts --target debug",
+    "asbuild:optimized": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "build": "tsc -p ./src",
+    "test": "node tests"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/node": "^14.14.5",
+    "assemblyscript": "^0.17.0",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "commander": "^6.2.0",
+    "sha3": "^2.1.3"
+  }
+}
