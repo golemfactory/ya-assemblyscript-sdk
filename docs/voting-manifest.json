@@ -1,0 +1,111 @@
+{
+  "id": "ce38dba2-19ce-11eb-a060-57e8812ec8da",
+  "name": "MyApp",
+  "runtime": "aswasm",
+  "main": {
+    "wasm-path": "app.wasm"
+  },
+  "entry-points": {
+    "init": {
+      "args": [
+        {
+          "name": "contract",
+          "type": "bytes"
+        },
+        {
+          "name": "voting_id",
+          "type": "string"
+        }
+      ]
+    },
+    "register": {
+      "args": [
+        {
+          "name": "contract",
+          "type": "bytes"
+        },
+        {
+          "name": "voting_id",
+          "type": "string"
+        },
+        {
+          "name": "operator_addr",
+          "type": "bytes"
+        },
+        {
+          "name": "sender",
+          "type": "bytes",
+          "fixed": 20
+        },
+        {
+          "name": "signature",
+          "type": "bytes"
+        },
+        {
+          "name": "session_pub_key",
+          "type": "bytes"
+        }
+      ]
+    },
+    "start": {
+      "desc": "starts the voting",
+      "args": [
+        {
+          "name": "contract",
+          "type": "bytes"
+        },
+        {
+          "name": "voting_id",
+          "type": "string"
+        },
+        {
+          "name": "operator_addr",
+          "type": "bytes"
+        }
+      ]
+    },
+    "vote": {
+      "desc": "adds an encrypted vote",
+      "args": [
+        {
+          "name": "contract",
+          "type": "bytes"
+        },
+        {
+          "name": "voting_id",
+          "type": "string"
+        },
+        {
+          "name": "operator_addr",
+          "type": "bytes"
+        },
+        {
+          "name": "sender",
+          "type": "bytes",
+          "fixed": 20
+        },
+        {
+          "name": "encrypted_vote",
+          "type": "bytes"
+        }
+      ]
+    },
+    "report": {
+      "desc": "prints voting summary",
+      "args": [
+        {
+          "name": "contract",
+          "type": "bytes"
+        },
+        {
+          "name": "voting_id",
+          "type": "string"
+        },
+        {
+          "name": "operator_addr",
+          "type": "bytes"
+        }
+      ]
+    }
+  }
+}

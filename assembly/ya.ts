@@ -25,7 +25,7 @@ export declare function log(message : string) : void;
   }
 
   sign(message: ArrayBuffer): ArrayBuffer {
-    return eth.sign(self.bytes, message);
+    return eth.sign(this.bytes, eth.keccak256(message));
   }
 
   sign_str(message: string): ArrayBuffer {
@@ -39,7 +39,7 @@ export declare namespace eth {
   export function newKey(): ArrayBuffer;
   export function prvToAddress(pk: ArrayBuffer): string;
   export function pubToAddress(pubK: ArrayBuffer): string;
-  export function sign(pk: ArrayBuffer, message: ArrayBuffer): ArrayBuffer;
+  export function sign(pk: ArrayBuffer, messageHash: ArrayBuffer): ArrayBuffer;
   export function keccak256(bytes : ArrayBuffer): ArrayBuffer;
   // 
   // messageHash - 32 message hash,
@@ -52,11 +52,12 @@ export declare namespace eth {
 }
 
 export declare namespace io {
-  export function wopen(path: string) : anyref;
-  export function ropen(path: string) : anyref;
-  export function write(fd: anyref, bytes : ArrayBuffer) : i32;
-  export function read(fd: anyref, bytes : ArrayBuffer) : i32;
-  export function close(fd: anyref) : void;
+  type Fd=i32;
+  export function wopen(path: string) : Fd;
+  export function ropen(path: string) : Fd;
+  export function write(fd: Fd, bytes : ArrayBuffer) : i32;
+  export function read(fd: Fd, bytes : ArrayBuffer) : i32;
+  export function close(fd: Fd) : void;
 }
 
 
