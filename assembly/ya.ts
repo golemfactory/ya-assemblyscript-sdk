@@ -17,7 +17,6 @@ export declare function log(message : string) : void;
 
   constructor() {
     this.bytes = eth.newKey()
-    log("bytes: " + this.bytes.byteLength.toString())
   }
 
   address() : string {
@@ -59,5 +58,3 @@ export declare namespace io {
   export function read(fd: Fd, bytes : ArrayBuffer) : i32;
   export function close(fd: Fd) : void;
 }
-
-
